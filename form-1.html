@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>WOW FORM</title>
+
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;	
+		}
+		body{
+			min-width:960px;
+			color:#444;
+			background-color:#f1f1f1;
+			font-size:12px;
+			font-family:Arial, Helvetica, sans-serif;	
+		}
+		.wrapper{
+			padding:50px;
+			background-color:#fff;
+			width:860px;
+			margin:20px;
+			border:1px dashed #aaa;
+			position:relative;	
+		}
+		.option{
+			position:absolute;
+			top:-1px;
+			right:-1px;
+			background-color:#f1f1f1;
+			padding:5px;
+			border-left:1px dashed #aaa;
+			border-bottom:1px dashed #aaa;
+			cursor:pointer;
+		}
+		.tooltip{
+			float:right;
+			right:310px;
+			top:2px;
+			position:relative;
+		}
+		.help{
+			position:relative;
+			left:-220px;	
+		}
+		.tooltip > span{ 
+			display:inline-block; 
+			width:16px; 
+			height:16px; 
+			line-height:16px; 
+			font-size:11px; 
+			font-weight:bold; 
+			text-align:center; 
+			color:#FFF; 
+			cursor:help; 
+			background-color:#00AEEF; 
+			position:relative; 
+			border-radius:10px; 
+		}
+		.tooltip .content{ 
+			opacity:0; 
+			width:200px; 
+			background-color:#333; 
+			color:#FFF; 
+			font-size:11px; 
+			position:absolute; 
+			top:0; 
+			left:20px; 
+			padding:8px; 
+			border-radius:6px; 
+			pointer-events:none; 
+			transition:0.2s cubic-bezier(0.1, 0.1, 0.25, 2); 
+			-webkit-transition:0.3s cubic-bezier(0.1, 0.2, 0.5, 2.2); 
+			-moz-transition:0.3s cubic-bezier(0.1, 0.2, 0.5, 2.2);
+		}
+		.tooltip p{ 
+			padding:0; 
+		}
+		.tooltip:hover .content{ 
+			opacity:1; 
+			left:36px; 
+		}
+		.tooltip .content b{ 
+			height:0; 
+			width:0; 
+			border-color:#333 #333 transparent transparent; 
+			border-style:solid; 
+			border-width:9px 7px;
+			position:absolute; 
+			left:-14px; 
+			top:8px; 
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+	<center>
+
+		<div class="wrapper">
+
+			<div class="option">
+				<input type="checkbox" style="margin:5px;"/>
+				Vertical Orientation
+				<input type="checkbox" style="margin:5px;"/>
+				Disable alerts
+			</div>
+
+			<h1 style="padding:15px;">Fill the form here...</h1>
+			<form name="frm" method="post">
+				<table width="auto" border="0" cellspacing="0" cellpadding="0">
+					<tr height="40">
+						<td width="200">Name</td>
+						<td width="600">
+							<input type="text" placeholder="ex: komal verma" data-validate-length-range="6" data-validate-words="2" required="required" style="height:20px; width:250px;"/>
+							
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>Name must be at least 2 words</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+					
+					<tr height="40">
+						<td>Occupation</td>
+						<td>
+							<input type="text" data-validate-length-range="5,20" style="height:20px; width:250px;"/>
+							
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>An optional field. This field is only validated when it has a value.<br /><em>Minimum 5 chars for this example.</em></p>
+								</div>
+							</div>
+							<span style="margin-left:40px;">(optional)</span>
+						</td>
+					</tr>
+					<tr height="40">
+						<td>Email</td>
+						<td><input type="email" required="required" style="height:20px; width:250px;"/></td>
+					</tr>
+					<tr height="40">
+						<td>Confirm Email Address</td>
+						<td><input type="email" required="required" data-validate-linked='email' style="height:20px; width:250px;"/></td>
+					</tr>
+					
+					<tr height="40">
+						<td>Number</td>
+						<td>
+							<input type="number" data-validate-minmax="10,100" data-validate-pattern="numeric" required="required" style="height:20px; width:250px;"/>
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>Number must be between 10 and 100</p>
+								</div>
+							</div>    
+						</td>
+					</tr>
+					
+					<tr height="40">
+						<td>Date</td>
+						<td><input type="date" required="required" style="height:20px; width:250px;"/></td>
+					</tr>
+					<tr height="40">
+						<td>Password</td>
+						<td>
+							<input type="password" data-validate-length="6,8" required="required" style="height:20px; width:250px;"/>
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>Should be of length 6 OR 8 characters</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr height="40">
+						<td>Retype Password</td>
+						<td><input type="password" data-validate-linked='password' required="required" style="height:20px; width:250px;"/></td>
+					</tr>
+					<tr height="40">
+						<td>Telephone</td>
+						<td>
+							<input type="tel" required="required" data-validate-length-range="8,20" style="height:20px; width:250px;"/>
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>Notice that for a phone number user can input a '+' sign, a dash '-' or a space ' '</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr height="40">
+						<td>Drop down selection</td>
+						<td>
+							<select style="height:25px; width:250px;">
+								<option value="">-- none --</option>
+								<option value="01">Option 1</option>
+								<option value="02">Option 2</option>
+								<option value="03">Option 3</option>
+							</select>
+							
+							<div class='tooltip'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>Choose something or choose not. what shall it be?</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr height="40">
+						<td>Url</td>
+						<td><input type="url" placeholder="http://www.website.com" required="required" style="height:20px; width:250px;"/></td>
+					</tr>
+					<tr height="40">
+						<td>Multifield</td>
+						<td>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input type="text" maxlength="4" style="height:20px; width:50px;"/>
+							<input data-validate-length-range="24" data-validate-pattern="alphanumeric" type="hidden" required="required" />
+							
+							<div class='tooltip help'>
+								<span>?</span>
+								<div class='content'>
+									<b></b>
+									<p>This is a multifield, which let the user input a serial number or credit card number for example, and the trick is to validate the combined result, which is stored in a hidden field</p>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr height="40">
+						<td>Message</td>
+						<td><textarea required="required" style="height:30px; width:250px;"></textarea></td>
+					</tr>
+				</table>
+
+				<input type="submit" value="Submit" style="height:30px; width:100px; margin:20px;"/>
+			</form>
+		</div>
+
+	</center>
+
+</body>
+</html>
